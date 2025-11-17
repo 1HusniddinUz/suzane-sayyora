@@ -1,39 +1,489 @@
-nav
-{
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
+
+:root {
+  --nav-height: 64px;
+  --nav-max-width: 1440px;
+  --nav-transition: 260ms ease;
+  --nav-bg-blur: #b18050;
+  --nav-link-accent: #6366f1;
+}
+
+/* NAVBAR BASE */
+nav {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 100%;
+  z-index: 100;
+  align-content: center;
+  background: transparent; /* default transparent */
+  backdrop-filter: none;
+  transition: background-color var(--nav-transition),
+    backdrop-filter var(--nav-transition), box-shadow var(--nav-transition);
+}
+
+nav.scrolled {
+  background: var(--nav-bg-blur);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 40px #61472c;
+}
+
+/* Container */
+nav .container {
+  width: 90%;
+  max-width: var(--nav-max-width);
+  margin: 0 auto;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8vh;
+}
+
+/* LOGO */
+.logo_box {
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.logo_box h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: white;
+}
+
+nav.scrolled .logo_box h1 {
+  color: #f9fafb;
+}
+
+/* NAV LINKS DESKTOP */
+.nav_links {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* >>> Faqat asosiy ul (dropdown ichidagi ul ga tegmaydi!) */
+.nav_links > ul {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav_links li {
+  display: flex;
+  align-items: center;
+}
+
+.nav_links a {
+  position: relative;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+  transition: color 180ms ease;
+}
+
+nav.scrolled .nav_links a {
+  color: #e5e7eb;
+}
+
+.nav_links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: white;
+  transition: width 180ms ease;
+}
+
+.nav_links a:hover {
+  color: white;
+}
+
+nav.scrolled .nav_links a:hover {
+  color: white;
+}
+
+.nav_links a:hover::after {
+  width: 100%;
+}
+
+/* LANGUAGE SELECT DESKTOP */
+.lang_provider {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.lang_provider select {
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: none;
+  background: #b18050;
+  font-size: 0.8rem;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(209, 213, 219, 0.9);
+  transition: box-shadow 180ms ease, background-color 180ms ease,
+    color 180ms ease;
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.lang_provider select:hover {
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 1);
+}
+
+nav.scrolled .lang_provider select {
+  background: #61472c;
+  color: #e5e7eb;
+  box-shadow: 0 0 0 1px #61472c;
+}
+
+/* BURGER BUTTON (minimal, modern) */
+.burger {
+  display: none; /* desktopda ko'rinmaydi */
+  margin-left: auto;
+  width: 30px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: #b18050;
+  transition: transform 200ms ease, opacity 200ms ease,
+    background-color 200ms ease;
+}
+
+nav.scrolled .burger span {
+  background: #e5e7eb;
+}
+
+.burger span + span {
+  margin-top: 5px;
+}
+
+/* Burger active -> X */
+.burger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* MOBILE LANGUAGE (dropdown ichida) defaultda ko'rinmaydi */
+.lang_provider_mobile {
+  display: none !important;
+}
+
+/* ===== MARKETPLACES DROPDOWN – DESKTOP BASE ===== */
+
+.has-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-toggle {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: inherit;
+}
+
+nav.scrolled .dropdown-toggle {
+  color: #e5e7eb;
+}
+
+.dropdown-toggle:focus {
+  outline: none;
+}
+
+.dropdown-arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #e5e7eb;
+  transition: transform 200ms ease;
+}
+
+/* JS orqali .open-dropdown qo'yilganda arrow aylanadi (mobil uchun) */
+.has-dropdown.open-dropdown .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Dropdown menyu (desktop uchun bazaviy holat) */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.10rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 210px;
+  padding: 0.75rem 0.9rem;
+  border-radius: 14px;
+  background: #b18050;
+  box-shadow: 0 18px 40px #61472c;
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease, transform 220ms ease;
+  z-index: 95;
+  -webkit-transform: translateX(-50%) translateY(-8px);
+  -moz-transform: translateX(-50%) translateY(-8px);
+  -ms-transform: translateX(-50%) translateY(-8px);
+  -o-transform: translateX(-50%) translateY(-8px);
+}
+
+.dropdown-menu li {
+  width: 100%;
+}
+
+.dropdown-menu a {
+  width: 100%;
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e5e7eb;
+  text-decoration: none;
+  padding: 0.25rem 0;
+}
+
+.dropdown-menu a:hover {
+  color: white
+}
+
+/* DESKTOP (hover bilan ochiladi) */
+@media (min-width: 901px) {
+  .container {
+    max-width: 1440px;
+  }
+  .has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+
+  .has-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+}
+
+/* ===== Tablet & mobile (<= 900px) ===== */
+@media (max-width: 900px) {
+  nav {
+    height: auto;
+  }
+
+  nav .container {
+    height: 56px;
+  }
+
+  .logo_box {
+    width: auto;
+  }
+
+  .nav_links {
+    width: auto;
+    position: static;
+  }
+
+  .lang_provider {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  /* FULLSCREEN MENYU OVERLAY (faqat asosiy ul uchun!) */
+  .nav_links > ul {
+    position: fixed;
+    top: 56px;
+    left: 0;
     width: 100%;
-    height: 8vh;
-    border: 1px solid black ;
-    align-content: center;
-}
-nav .container  
-{
-    width: 90%;
-    max-width: 1920px;        
-    margin: 0 auto;
+    height: 90vh;
+
+    padding: 1.5rem 1.5rem 2rem;
+    border-radius: 0 0 24px 24px;
+
+    background: radial-gradient(circle at top, #111827 0, #020617 60%);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 18px 40px #c7d2fe;
+
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.logo_box
-{
-    width: 20%;
-    border: 1px solid red;
-}
-.nav_links
-{
-    width: 40%;
-    border: 1px solid blue;
-}
-.nav_links ul 
-{
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+    transition: opacity 260ms ease, transform 260ms ease;
+    z-index: 95;
+  }
+
+  .nav_links > ul.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav_links li {
+    width: 100%;
+  }
+
+  .nav_links a {
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .nav_links a::after {
+    display: none;
+  }
+
+  .nav_links a:hover {
+    color: #c7d2fe;
+  }
+
+  .lang_provider_mobile {
+    display: block !important;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(55, 65, 81, 0.85);
+  }
+
+  .lang_provider_mobile select {
+    width: 100%;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    border: none;
+    background: rgba(15, 23, 42, 0.85);
+    color: #e5e7eb;
+    font-size: 0.78rem;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(75, 85, 99, 0.95);
+    transition: box-shadow 180ms ease, background-color 180ms ease;
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+  }
+
+  .lang_provider_mobile select:hover {
+    box-shadow: 0 0 0 1px rgba(129, 140, 248, 1);
+    background: rgba(17, 24, 39, 0.98);
+  }
+
+  /* MOBILE / TABLET: MARKETPLACES DROPDOWN */
+
+  .has-dropdown {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dropdown-toggle {
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    font-size: 0.9rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #e5e7eb;
+  }
+
+  .dropdown-arrow {
+    border-top-color: #e5e7eb;
+  }
+
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    min-width: 100%;
+    padding: 0;
+    margin-top: 0.4rem;
+    background: transparent;
+    box-shadow: none;
+    gap: 0.2rem;
+    z-index: 99;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform-origin: top;
+    transform: translateY(-6px);
+    transition: max-height 260ms ease, opacity 260ms ease, transform 260ms ease;
+  }
+
+  .dropdown-menu.show {
+    max-height: 220px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; /* <<< SHU QATORNI QO'SH */
+  }
+
+  .dropdown-menu a {
+    padding: 0.22rem 0;
+    font-size: 0.8rem;
+  }
 }
-.lang_provider  
-{
-    width: 20%;
-    border: 1px solid gray;
-    text-align: right;
+
+/* Kichik telefonlar */
+@media (max-width: 520px) {
+  nav .container {
+    width: 92%;
+  }
+
+  .logo_box h1 {
+    font-size: 0.9rem;
+  }
+
+  .nav_links > ul {
+    width: 100%;
+  }
 }

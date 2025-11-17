@@ -1,0 +1,300 @@
+/* Products.css */
+
+:root {
+  --bg: #f5f5f5;
+  --card-bg: #ffffff;
+  --border: #e2e2e2;
+  --border-soft: #f0f0f0;
+  --text-main: #111111;
+  --text-muted: #666666;
+  --accent: #b68452; /* iliq, milliy buyumlar bilan mos tus */
+}
+
+.products {
+  padding: 64px 48px;
+  background-color: var(--bg);
+  color: var(--text-main);
+}
+
+.products-header {
+  max-width: 960px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.products-header h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.products-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* GRID: default 2 ustun → 2 qator = 4 ta card chiroyli ko'rinadi */
+.products-grid {
+  display: grid;
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1200px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* CARD */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  padding: 0;
+  border-radius: 0; /* qirrali to'rtburchak */
+  overflow: hidden;
+  transition: border-color 150ms ease, box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.product-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+/* RASM QISMI */
+.product-image-wrapper {
+  height: 65% !important;
+  background: linear-gradient(135deg, #fafafa, #f0f0f0);
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 200ms ease;
+}
+
+.product-card:hover .product-image-wrapper img {
+  transform: scale(1.06);
+}
+
+/* MATN QISMI */
+.product-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 16px 18px;
+  height: 35%;
+}
+
+.product-top {
+  margin-bottom: 12px;
+}
+
+.product-name {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.product-info {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* PASTKI QATOR: NARX + TUGMA */
+.product-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.product-price {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+.product-btn {
+  border: 1px solid var(--border);
+  background-color: transparent;
+  color: var(--text-main);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 0; /* qirrali */
+  transition: background-color 150ms ease, color 150ms ease,
+    border-color 150ms ease;
+}
+
+.product-btn:hover {
+  background-color: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+/* SHOW MORE / SHOW LESS CONTROLS */
+
+.products-controls {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.toggle-btn {
+  border-radius: 0; /* qirrali */
+  border: 1px solid var(--border);
+  background-color: transparent;
+  color: var(--text-main);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 10px 18px;
+  cursor: pointer;
+  min-width: 150px;
+  transition: background-color 150ms ease, color 150ms ease,
+    border-color 150ms ease, transform 120ms ease;
+}
+
+.toggle-btn.primary {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.toggle-btn.primary:hover {
+  background-color: var(--accent);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.toggle-btn.secondary {
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+.toggle-btn.secondary:hover {
+  background-color: #e9e9e9;
+  color: var(--text-main);
+  transform: translateY(-1px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .products {
+    padding: 48px 24px;
+  }
+
+  .product-image-wrapper {
+    height: 190px;
+  }
+}
+
+@media (max-width: 600px) {
+  .products {
+    padding: 24px 12px;
+  }
+
+  /* Mobile ham 2 ta ustun */
+  .products-grid {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .product-card {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+    border-width: 1px;
+  }
+
+  .product-image-wrapper {
+    height: 140px;
+  }
+
+  .product-body {
+    padding: 10px 8px 10px;
+  }
+
+  .product-name {
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+  }
+
+  .product-info {
+    font-size: 0.65rem;
+    line-height: 1.35;
+    /* matnni biroz qisqartiramiz, cardni cho'zmaydi */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .product-bottom {
+    margin-top: 6px;
+    gap: 4px;
+  }
+
+  .product-price {
+    font-size: 0.65rem;
+  }
+
+  .product-btn {
+    padding: 5px 8px;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+
+  .products-controls {
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .toggle-btn {
+    width: 100%;
+    max-width: 240px;
+    padding: 8px 12px;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .products-grid {
+    max-width: 1000px; /* biroz kengroq joy, kattaroq cardlar chiroyli turadi */
+  }
+
+  .product-card {
+    max-height: 550px; /* taxminan 700px balandlik */
+  }
+
+  .product-image-wrapper {
+    height: 260px; /* yuqori qismi ham biroz kattaroq ko'rinsin */
+  }
+
+  .product-body {
+    padding: 20px 18px 22px; /* katta cardga mosroq padding */
+  }
+}
