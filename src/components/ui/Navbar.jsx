@@ -72,13 +72,13 @@ const Navbar = () => {
 
           <ul className={isMenuOpen ? "open" : ""}>
             <li>
-              <a href="#home" onClick={handleLinkClick}>
+              <a href="/" onClick={handleLinkClick}>
                 {t(`home`)}
               </a>
             </li>
 
             <li>
-              <a href="#products" onClick={handleLinkClick}>
+              <a href="#Products" onClick={handleLinkClick}>
                 {t`products`}
               </a>
             </li>
@@ -143,13 +143,13 @@ const Navbar = () => {
             </li>
 
             <li>
-              <a href="#about" onClick={handleLinkClick}>
+              <a href="#AboutUs" onClick={handleLinkClick}>
                 {t(`about`)}
               </a>
             </li>
 
             <li>
-              <a href="#contacts" onClick={handleLinkClick}>
+              <a href="#ContactForm" onClick={handleLinkClick}>
                 {t(`contact`)}
               </a>
             </li>
