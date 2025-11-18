@@ -14,7 +14,7 @@ const Navbar = () => {
       const winHeight = window.innerHeight;
 
       const scrollPercent = scrollTop / (docHeight - winHeight);
-      setIsBlurred(scrollPercent >= 0.2);
+      setIsBlurred(scrollPercent >= 0.1);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -54,7 +54,7 @@ const Navbar = () => {
     >
       <div className="container">
         <div className="logo_box">
-          <h1>By Sayyora</h1>
+          <h1>Suzane Sayyora</h1>
         </div>
 
         <div className="nav_links">
