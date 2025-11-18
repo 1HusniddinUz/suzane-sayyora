@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../assets/Navbar.css";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const [isBlurred, setIsBlurred] = useState(false);
@@ -43,6 +44,8 @@ const Navbar = () => {
     }
   };
 
+  const { t  , i18n } = useTranslation();
+
   return (
     <nav
       className={`${isBlurred ? "scrolled" : ""} ${
@@ -70,21 +73,19 @@ const Navbar = () => {
           <ul className={isMenuOpen ? "open" : ""}>
             <li>
               <a href="#home" onClick={handleLinkClick}>
-                Home
+                {t(`home`)}
               </a>
             </li>
 
             <li>
               <a href="#products" onClick={handleLinkClick}>
-                Products
+                {t`products`}
               </a>
             </li>
 
             {/* MARKETPLACES DROPDOWN */}
             <li
-              className={`has-dropdown ${
-                isMarketOpen ? "open-dropdown" : ""
-              }`}
+              className={`has-dropdown ${isMarketOpen ? "open-dropdown" : ""}`}
             >
               <button
                 type="button"
@@ -99,22 +100,42 @@ const Navbar = () => {
 
               <ul className={`dropdown-menu ${isMarketOpen ? "show" : ""}`}>
                 <li>
-                  <a href="https://www.ozon.ru/product/suzane-ruchnoy-raboty-3119456542/?oos_search=false" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>
+                  <a
+                    href="https://www.ozon.ru/product/suzane-ruchnoy-raboty-3119456542/?oos_search=false"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleLinkClick}
+                  >
                     Ozon
                   </a>
                 </li>
                 <li>
-                  <a href="https://uzum.uz/uz/product/qol-mehnati-bilan-tikilgan-suzane-2117294" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>
+                  <a
+                    href="https://uzum.uz/uz/product/qol-mehnati-bilan-tikilgan-suzane-2117294"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleLinkClick}
+                  >
                     Uzum Market
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.wildberries.ru/catalog/622433138/detail.aspx?targetUrl=GP" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>
+                  <a
+                    href="https://www.wildberries.ru/catalog/622433138/detail.aspx?targetUrl=GP"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleLinkClick}
+                  >
                     Wildberries
                   </a>
                 </li>
                 <li>
-                  <a href="https://market.yandex.uz/card/suzane-ruchnoy-raboty-interyernyy-tekstil-premium-klassa-osnova-vypolnena-iz-atlasa-a-niti-vyshivki--100-shelk/4769197220?businessId=216503443&showOriginalKmEmptyOffer=1&ogV=-6" target="_blank" rel="noopener noreferrer" onClick={handleLinkClick}>
+                  <a
+                    href="https://market.yandex.uz/card/suzane-ruchnoy-raboty-interyernyy-tekstil-premium-klassa-osnova-vypolnena-iz-atlasa-a-niti-vyshivki--100-shelk/4769197220?businessId=216503443&showOriginalKmEmptyOffer=1&ogV=-6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleLinkClick}
+                  >
                     Yandex Market
                   </a>
                 </li>
@@ -123,22 +144,28 @@ const Navbar = () => {
 
             <li>
               <a href="#about" onClick={handleLinkClick}>
-                About
+                {t(`about`)}
               </a>
             </li>
 
             <li>
               <a href="#contacts" onClick={handleLinkClick}>
-                Contacts
+                {t(`contact`)}
               </a>
             </li>
 
             {/* MOBILE / TABLET LANG SELECT (navbar ichida) */}
             <li className="lang_provider_mobile">
-              <select>
-                <option value="uz">O'zbek</option>
-                <option value="en">English</option>
-                <option value="ru">Русский</option>
+              <select
+                id="select"
+                onChange={(e) => i18n.changeLanguage(e.target.value)}
+                defaultValue="uz"
+              >
+                <option value="uz">🇺🇿 O'zbek</option>
+                <option value="ru">🇷🇺 Русский</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="tr">🇹🇷 Türkçe</option>
+                <option value="fr">🇫🇷 Français</option>
               </select>
             </li>
           </ul>
@@ -146,10 +173,16 @@ const Navbar = () => {
 
         {/* DESKTOP LANG PROVIDER */}
         <div className="lang_provider">
-          <select>
-            <option value="uz">O'zbek</option>
-            <option value="en">English</option>
-            <option value="ru">Русский</option>
+          <select
+            id="select"
+            onChange={(e) => i18n.changeLanguage(e.target.value)}
+            defaultValue="uz"
+          >
+            <option value="uz">🇺🇿 O'zbek</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="tr">🇹🇷 Türkçe</option>
+            <option value="fr">🇫🇷 Français</option>
           </select>
         </div>
       </div>

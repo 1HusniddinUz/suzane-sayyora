@@ -1,104 +1,104 @@
 // Products.jsx
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import "../../assets/Products.css";
-import img1 from "../../assets/images/1.png"
-import img2 from "../../assets/images/2.png"
-import img3 from "../../assets/images/3.png"
-import img4 from "../../assets/images/4.png"
-import img5 from "../../assets/images/5.png"
-import img6 from "../../assets/images/6.png"
-import img7 from "../../assets/images/7.png"
-import img8 from "../../assets/images/8.png"
-import img9 from "../../assets/images/9.png"
-import img10 from "../../assets/images/10.png"
-import img11 from "../../assets/images/11.png"
-import img12 from "../../assets/images/12.png"
-import img13 from "../../assets/images/13.png"
-import img14 from "../../assets/images/14.png"
-import img15 from "../../assets/images/15.png"
-import img16 from "../../assets/images/16.png"
-const productData = [
-  {
-    id: 1,
-    img: img1,
-    name: "Qo'l tikilgan kichkina suzani – anor gul naqshli",
-    price: 150000,
-    info: "Tabiiy matoda ipak iplar bilan tikilgan an'anaviy anor gul naqshli suzani."
-  },
-  {
-    id: 2,
-    img: img2,
-    name: "Kichkina suzani – uy bezagi",
-    price: 150000,
-    info: "Oila ramzi va an'anaviy bezaklar tushirilgan kichkina o'lchamli suzani. To'y sovg'asi sifatida ham berish mumkin."
-  },
-  {
-    id: 3,
-    img: img3,
-    name: "Kashtali ko'k - atlas yostiq jildi",
-    price: 150000,
-    info: "Atlas matodan tikilgan, kundalik va bayram uchun mos, yengil va qulay milliy ayollar ko'ylagi."
-  },
-  {
-    id: 4,
-    img: img4,
-    name: "Kashtali yostiq jildi",
-    price: 150000,
-    info: "Qo'l kashtalari bilan bezatilgan milliy yostiq jildi."
-  },
-  {
-    id: 5,
-    img: img5,
-    name: "Kashtali atlas suzane matosi",
-    price: 1800000,
-    info: "Milliy naqshlar tushirilgan, qo'l bilan tikilgan suzane . Ko'ylak va kamzullar bilan chiroyli uyg'unlashadi."
-  },
-  {
-    id: 6,
-    img: img6,
-    name: "Anor tasvirlangan – atlas suzane matosi",
-    price: 1800000,
-    info: "Iplari ranglari va naqshlari turlicha bo'lgan milliy atlas matolari. Kamzul yoki boshqa turdagi uy buyumlari uchun mos. 50x190"
-  },
-  {
-    id: 7,
-    img: img7,
-    name: "Atlas matosi",
-    price: 1800000,
-    info: `Yengil matodan tayyorlangan, suzani uslubidagi naqshlar bilan bezatilgan ayollar suzanesi. 50x190`
-  },
-  {
-    id: 8,
-    img: img8,
-    name: "Atlas matosi",
-    price: 1800000,
-    info: "Yengil matodan tayyorlangan, suzani uslubidagi naqshlar bilan bezatilgan ayollar suzanesi. 50x190"
-  },
-  {
-    id: 9,
-    img: img9,
-    name: "Har xil turdagi milliy atlas matolari ",
-    price: 1800000,
-    info: "Iplari ranglari va naqshlari turlicha bo'lgan milliy atlas matolari. Kamzul yoki boshqa turdagi uy buyumlari uchun mos. 50x190"
-  },
-  {
-    id: 10,
-    img: img10,
-    name: "Vilur ipidan sumka",
-    price: 220000,
-    info: "Qo'lda vilur ipi shers bilan ignada tikilgan milliy uslubdagi sumka. Kundalik hayotda ham, milliy tadbirlarda ham foydalanish mumkin."
-  }
-];
+
+import img1 from "../../assets/images/1.png";
+import img2 from "../../assets/images/2.png";
+import img3 from "../../assets/images/3.png";
+import img4 from "../../assets/images/4.png";
+import img5 from "../../assets/images/5.png";
+import img6 from "../../assets/images/6.png";
+import img7 from "../../assets/images/7.png";
+import img8 from "../../assets/images/8.png";
+import img9 from "../../assets/images/9.png";
+import img10 from "../../assets/images/10.png";
+// qolgan img11–img16 agar boshqa joyda kerak bo'lmasa, bemalol o‘chirib yuborish mumkin
 
 const formatPrice = (price) =>
   price.toLocaleString("uz-UZ", {
     style: "currency",
     currency: "UZS",
-    maximumFractionDigits: 0
+    maximumFractionDigits: 0,
   });
 
 const Products = () => {
+  const { t } = useTranslation();
   const [visibleCount, setVisibleCount] = useState(4);
+
+  // 🔽 product name & info lar translationsUz dan
+  const productData = [
+    {
+      id: 1,
+      name: t("product1.name"),
+      info: t("product1.info"),
+      img: img1,
+      price: 150000,
+    },
+    {
+      id: 2,
+      name: t("product2.name"),
+      info: t("product2.info"),
+      img: img2,
+      price: 150000,
+    },
+    {
+      id: 3,
+      name: t("product3.name"),
+      info: t("product3.info"),
+      img: img3,
+      price: 150000,
+    },
+    {
+      id: 4,
+      name: t("product4.name"),
+      info: t("product4.info"),
+      img: img4,
+      price: 150000,
+    },
+    {
+      id: 5,
+      name: t("product5.name"),
+      info: t("product5.info"),
+      img: img5,
+      price: 1800000,
+    },
+    {
+      id: 6,
+      name: t("product6.name"),
+      info: t("product6.info"),
+      img: img6,
+      price: 1800000,
+    },
+    {
+      id: 7,
+      name: t("product7.name"),
+      info: t("product7.info"),
+      img: img7,
+      price: 1800000,
+    },
+    {
+      id: 8,
+      name: t("product8.name"),
+      info: t("product8.info"),
+      img: img8,
+      price: 1800000,
+    },
+    {
+      id: 9,
+      name: t("product9.name"),
+      info: t("product9.info"),
+      img: img9,
+      price: 1800000,
+    },
+    {
+      id: 10,
+      name: t("product10.name"),
+      info: t("product10.info"),
+      img: img10,
+      price: 220000,
+    },
+  ];
 
   const handleShowMore = () => {
     setVisibleCount((prev) => Math.min(prev + 2, productData.length));
@@ -114,8 +114,11 @@ const Products = () => {
   return (
     <section id="Products" className="products">
       <div className="products-header">
-        <h2>Mahsulotlar</h2>
-        <p>Qo'l mehnati bilan yaratilgan suzani va milliy ayollar buyumlari to'plami</p>
+        <h2>{t("productH3")}</h2>
+        <p>
+          Qo'l mehnati bilan yaratilgan suzani va milliy ayollar buyumlari
+          to'plami
+        </p>
       </div>
 
       <div className="products-grid">
@@ -130,7 +133,9 @@ const Products = () => {
                 <p className="product-info">{item.info}</p>
               </div>
               <div className="product-bottom">
-                <span className="product-price">{formatPrice(item.price)}</span>
+                <span className="product-price">
+                  {formatPrice(item.price)}
+                </span>
                 <button className="product-btn" type="button">
                   Batafsil
                 </button>
@@ -147,7 +152,7 @@ const Products = () => {
             className="toggle-btn primary"
             onClick={handleShowMore}
           >
-            Show more
+            {t("productMore")}
           </button>
         )}
 
@@ -157,7 +162,7 @@ const Products = () => {
             className="toggle-btn secondary"
             onClick={handleShowLess}
           >
-            Show less
+            {t("productClose")}
           </button>
         )}
       </div>
@@ -166,4 +171,3 @@ const Products = () => {
 };
 
 export default Products;
- 
