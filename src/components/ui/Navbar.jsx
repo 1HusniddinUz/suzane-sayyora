@@ -111,7 +111,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://uzum.uz/uz/product/qol-mehnati-bilan-tikilgan-suzane-2117294"
+                    href="https://uzum.uz/uz/product/uchburchak-shakldagi-qol-2119614"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleLinkClick}

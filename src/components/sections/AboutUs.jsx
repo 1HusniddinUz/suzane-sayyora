@@ -1,13 +1,13 @@
 import React from "react";
 import "../../assets/AboutUs.css";
-
+import AuthorImage from "../../assets/images/author.jpg";
 const AboutUs = () => {
   return (
     <div id="AboutUs">
       <div className="container">
         <div className="author_image">
           <img
-            src="/images/author.jpg"
+            src={AuthorImage}
             alt="Author"
           />
         </div>
